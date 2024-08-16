@@ -5,11 +5,12 @@ import 'package:recipe_app/firebase_options.dart';
 import 'package:recipe_app/views/add_recipe_view.dart';
 import 'package:recipe_app/views/home_view.dart';
 import 'package:recipe_app/views/onboarding_view.dart';
+import 'package:recipe_app/views/personal_view.dart';
+import 'package:recipe_app/views/profile_details_view.dart';
 import 'package:recipe_app/views/recipe_details_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -25,7 +26,7 @@ class RecipeApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor)),
       debugShowCheckedModeBanner: false,
-      home: AddRecipeView(),
+      home: PersonalView(),
     );
   }
 }
