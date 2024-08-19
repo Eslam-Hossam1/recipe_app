@@ -8,6 +8,7 @@ import 'package:recipe_app/cubits/auth_cubits/login_cubit/login_states.dart';
 import 'package:recipe_app/helper/add_space.dart';
 import 'package:recipe_app/views/home_view.dart';
 import 'package:recipe_app/views/signup_view.dart';
+import 'package:recipe_app/views/username_photo_view.dart';
 import 'package:recipe_app/widgets/login_form.dart';
 import 'package:recipe_app/widgets/svg_elevated_button.dart';
 
@@ -59,7 +60,7 @@ class _LoginViewState extends State<LoginView> {
         if (FirebaseAuth.instance.currentUser!.emailVerified) {
           Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) {
-            return const HomeView();
+            return const UsernamePhotoView();
           }));
         } else {
           await BlocProvider.of<LoginCubit>(context).sendEmailVerification();

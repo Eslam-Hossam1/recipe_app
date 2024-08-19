@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:recipe_app/constants.dart';
 import 'package:recipe_app/cubits/auth_cubits/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:recipe_app/cubits/auth_cubits/forgot_password_cubit/forgot_password_states.dart';
 import 'package:recipe_app/helper/add_space.dart';
@@ -61,22 +62,39 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
           body: ListView(
             children: [
               addHieghtSpace(32),
-              Container(
-                  height: 80,
-                  width: 80,
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade300, shape: BoxShape.circle),
-                  child: Image.asset(
-                    "assets/icons8-buying-48.png",
-                  )),
+              Center(
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      backgroundImage:
+                          AssetImage("assets/shrimp_sushi_bowls.jpeg"),
+                      radius: 70,
+                    ),
+                    Positioned(
+                      bottom: 8,
+                      right: 0,
+                      child: CircleAvatar(
+                        backgroundColor: kPrimaryColor,
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.camera_alt_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               addHieghtSpace(8),
               ListTile(
                 title: Text(
-                  "Forgot Password",
+                  "Enter your username and profile photo",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
                 subtitle: Text(
-                  "Write your email to reset your password",
+                  "this informations that will other users see",
                   style: TextStyle(color: Colors.grey.shade500),
                 ),
               ),
