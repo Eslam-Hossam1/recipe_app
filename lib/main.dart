@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_app/constants.dart';
+import 'package:recipe_app/cubits/auth_cubits/forgot_password_cubit/forgot_password_cubit.dart';
 import 'package:recipe_app/cubits/auth_cubits/login_cubit/login_cubit.dart';
 import 'package:recipe_app/cubits/auth_cubits/signup_cubit/signup_cubit.dart';
 import 'package:recipe_app/firebase_options.dart';
@@ -32,6 +33,7 @@ class RecipeApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => SignUpCubit()),
+        BlocProvider(create: (context) => ForgotPasswordCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData(

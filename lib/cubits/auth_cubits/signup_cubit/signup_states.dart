@@ -10,5 +10,3 @@ class SignUpFailureState extends SignUpStates {
 class SignUpInitialState extends SignUpStates {}
 
 class SignUpSuccessState extends SignUpStates {}
-
-class SendVerificationState extends SignUpStates {}
