@@ -39,6 +39,10 @@ dependencies:
   firebase_auth: ^5.1.4
   background_app_bar: ^2.1.0
   flutter_svg: ^2.0.10+1
+  modal_progress_hud_nsn: ^0.5.1
+  awesome_dialog: ^3.2.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:

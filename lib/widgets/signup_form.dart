@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_app/cubits/auth_cubits/signup_cubit/signup_cubit.dart';
 import 'package:recipe_app/helper/add_space.dart';
 import 'package:recipe_app/views/login_view.dart';
 import 'package:recipe_app/widgets/custome_elevated_button.dart';
@@ -76,28 +78,8 @@ class _SignupFormState extends State<SignupForm> {
                 onPressed: () async {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    try {
-                      final credential = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                      );
-                      FirebaseAuth.instance.currentUser!
-                          .sendEmailVerification();
-                      log("pls go verify your email nigga");
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const LoginView();
-                      }));
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'weak-password') {
-                        log('The password provided is too weak.');
-                      } else if (e.code == 'email-already-in-use') {
-                        log('The account already exists for that email.');
-                      }
-                    } catch (e) {
-                      log(e.toString());
-                    }
+                    await BlocProvider.of<SignUpCubit>(context)
+                        .createUserWithEmailAndPassword(email, password);
                   } else {
                     setState(() {
                       autovalidateMode = AutovalidateMode.always;
